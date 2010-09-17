@@ -1,0 +1,12 @@
+php_flag magic_quotes_gpc off 
+
+RewriteEngine on 
+RewriteRule ^css/(.*)$ 	data/css/$1 [L]
+RewriteRule ^img/(.*)$ 	data/img/$1 [L]
+RewriteRule ^js/(.*)$ 	data/js/$1 [L]
+
+RewriteCond %{REQUEST_URI} !^/css(/.*)
+RewriteCond %{REQUEST_URI} !^/img(/.*)
+RewriteCond %{REQUEST_URI} !^/js(/.*)
+RewriteRule ^(.*)$ 		pipe.php      [NE]
+
